@@ -28,9 +28,15 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+NOSE_ARGS = ['--nocapture', 
+             '--nologcapture',]
+
 # Application definition
 
 INSTALLED_APPS = (
+    'django_nose',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
