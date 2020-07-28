@@ -24,6 +24,9 @@ def home_page(request):
         
         return redirect('/')
 
+    print("****view2****")
+    print(request)
+    print("****view2****")
     items = Item.objects.all()
 
     return render(request,'home.html', {'items':items})
