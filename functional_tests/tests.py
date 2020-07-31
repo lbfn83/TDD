@@ -59,7 +59,7 @@ class NewVisitorTest(LiveServerTestCase): #
 
         inputbox.send_keys(Keys.ENTER)
         
-        time.sleep(3)
+        #time.sleep(3)
 
         self.wait_for_row_in_list_table('1:Buy peacock feathers')
 
@@ -72,7 +72,7 @@ class NewVisitorTest(LiveServerTestCase): #
         inputbox.send_keys(Keys.ENTER)
       
 
-        time.sleep(3)
+        #time.sleep(3)
         #The page updates again, and now shows both items on her list
         self.wait_for_row_in_list_table('2:Use peacock feathers to make a fly')
         self.wait_for_row_in_list_table('1:Buy peacock feathers')
@@ -103,6 +103,8 @@ class NewVisitorTest(LiveServerTestCase): #
         #list
         self.browser.get(self.live_server_url)
         page_text = self.browser.find_element_by_tag_name('body').text 
+        print("debug")        
+        print(page_text)
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertNotIn('make a fly', page_text)
 

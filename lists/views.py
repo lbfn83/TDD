@@ -4,6 +4,11 @@ from lists.models import Item
 
 # Create your views here.
 #home_page = None
+
+def new_list(request):
+    Item.objects.create(text=request.POST['item_text'])
+    return redirect('/lists/the-only-list-in-the-world/')
+
 def view_list(request):
     items = Item.objects.all()
     print("*****view_view_list**********")
@@ -23,16 +28,6 @@ def home_page(request):
     
     #print( request.read())
     
-    if request.method =='POST':
-        print("*****view**********")
-        print(request)
-       
-        Item.objects.create(text=request.POST['item_text'])
-        
-        print(Item)
-        print("*****view**********")
-        
-        return redirect('/lists/the-only-list-in-the-world/')
 
     print("****view2****")
     print(request)
