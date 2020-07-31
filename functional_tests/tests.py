@@ -58,6 +58,8 @@ class NewVisitorTest(LiveServerTestCase): #
     #"1: Buy peacock feathers" as an item in a to-do list table
 
         inputbox.send_keys(Keys.ENTER)
+        
+        time.sleep(3)
 
         self.wait_for_row_in_list_table('1:Buy peacock feathers')
 
@@ -68,7 +70,9 @@ class NewVisitorTest(LiveServerTestCase): #
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Use peacock feathers to make a fly')
         inputbox.send_keys(Keys.ENTER)
-       
+      
+
+        time.sleep(3)
         #The page updates again, and now shows both items on her list
         self.wait_for_row_in_list_table('2:Use peacock feathers to make a fly')
         self.wait_for_row_in_list_table('1:Buy peacock feathers')
@@ -86,7 +90,7 @@ class NewVisitorTest(LiveServerTestCase): #
         #She notices that her list has a unique URL
         ##POST request 보낸 후에는. 새로운 item create 되는게 정상이지?
         edith_list_url = self.browser.current_url
-        self.assertRegex(edith_list_url, '/list/.+')
+        self.assertRegex(edith_list_url, '/lists/.+')
 
         #Now a new user, Francis, comes along to the site.
 

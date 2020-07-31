@@ -4,6 +4,16 @@ from lists.models import Item
 
 # Create your views here.
 #home_page = None
+def view_list(request):
+    items = Item.objects.all()
+    print("*****view_view_list**********")
+    for a in items:
+        print(a.text)
+
+    print("*****view_view_list**********")
+    return render(request, 'list.html', {'items':items})
+
+
 def home_page(request):
     #pass
     #return HttpResponse('<html><title>To-Do lists</title></html>')
@@ -22,11 +32,10 @@ def home_page(request):
         print(Item)
         print("*****view**********")
         
-        return redirect('/')
+        return redirect('/lists/the-only-list-in-the-world/')
 
     print("****view2****")
     print(request)
     print("****view2****")
-    items = Item.objects.all()
 
-    return render(request,'home.html', {'items':items})
+    return render(request,'home.html')
