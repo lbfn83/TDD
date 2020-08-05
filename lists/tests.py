@@ -72,8 +72,6 @@ class ListViewTest(TestCase):
         correct_list = List.objects.create()
         
         response = self.client.get(f'/lists/{correct_list.id}/')
-        print("00.flag")
-        print(response.content)
         self.assertEqual(response.context['list'], correct_list)
 
     def test_uses_list_template(self):
