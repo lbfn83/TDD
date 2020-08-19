@@ -7,12 +7,18 @@ from lists.models import Item, List
 
 def add_item(request, list_id):
     list_ = List.objects.get(id = list_id)
+    print("*add_item") 
+    print(list_)
+    print("*add_item")
     Item.objects.create(text=request.POST['item_text'], list = list_)
     return redirect(f'/lists/{list_.id}/')
 
 def new_list(request):
     list_ = List.objects.create()
     Item.objects.create(text=request.POST['item_text'], list=list_)
+    print("*new_list") 
+    print(list_)
+    print("*new_list")
     return redirect(f'/lists/{list_.id}/')
 
 def view_list(request, list_id):
