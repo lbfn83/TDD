@@ -1,2 +1,2 @@
-django==1.11.5
+django==1.11.29
 django-nose==1.4.5
