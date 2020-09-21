@@ -2,6 +2,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import WebDriverException
+from selenium.webdriver.firefox.options import Options
 import time
 import os
 
@@ -11,7 +12,10 @@ MAX_WAIT = 10
 class NewVisitorTest(StaticLiveServerTestCase): #
 
     def setUp(self): #
-        self.browser = webdriver.Firefox()
+        
+        options = Options()
+        options.headless = True
+        self.browser = webdriver.Firefox(options=options)
         staging_server = os.environ.get('STAGING_SERVER')
         if staging_server:
             self.live_server_url = 'http://' + staging_server
@@ -83,7 +87,8 @@ class NewVisitorTest(StaticLiveServerTestCase): #
         #The page updates again, and now shows both items on her list
         self.wait_for_row_in_list_table('2:Use peacock feathers to make a fly')
         self.wait_for_row_in_list_table('1:Buy peacock feathers')
-
+        
+        time.sleep(3)
         #Satisfied, she goes back to sleep
 
     def test_multiple_users_can_start_lists_at_different_urls(self):
@@ -106,7 +111,11 @@ class NewVisitorTest(StaticLiveServerTestCase): #
         ## We use a new browser session to make sure that no information
         ## of Edith's is coming through from cookies etc
         self.browser.quit()
-        self.browser = webdriver.Firefox()
+        
+        options=Options()
+        options.headless = True
+        
+        self.browser = webdriver.Firefox(options=options)
 
         #Francis visits thehome page. There is no sign of Edith's
         #list
