@@ -4,3 +4,4 @@ __pycache__
 geckodriver.log
 old_fuctional_test.py
 /static
+.env
