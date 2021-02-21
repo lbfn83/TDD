@@ -27,7 +27,7 @@ if 'DJANGO_DEBUG_FALSE' in os.environ:
 else:
     DEBUG = True
     SECRET_KEY = 'insecure-key-for-dev'
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['*']
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'wrm^!^y_qqt%jfiegwfst2a6n$52s5gyaftbvew2c14%p-r9&!'
